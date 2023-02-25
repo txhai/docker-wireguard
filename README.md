@@ -175,6 +175,7 @@ docker run -d \
   -e INTERNAL_SUBNET=10.13.13.0 `#optional` \
   -e ALLOWEDIPS=0.0.0.0/0 `#optional` \
   -e LOG_CONFS=true `#optional` \
+  -e DEV_NAME=wg0 `#required` \
   -p 51820:51820/udp \
   -v /path/to/appdata/config:/config \
   -v /lib/modules:/lib/modules \
@@ -203,7 +204,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-v /config` | Contains all relevant configuration files. |
 | `-v /lib/modules` | Maps host's modules folder. |
 | `--sysctl=` | Required for client mode. |
-
+| `-e DEV_NAME=wg0` | Initial device name, instead of hard code "wg0" as upstream/master |
 ### Portainer notice
 
 This image utilises `cap_add` or `sysctl` to work properly. This is not implemented properly in some versions of Portainer, thus this image may not work if deployed through Portainer.
