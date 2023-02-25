@@ -30,7 +30,8 @@ RUN \
     openresolv \
     perl \
     pkg-config \
-    qrencode && \
+    qrencode \
+    nmap && \
   update-alternatives --set iptables /usr/sbin/iptables-legacy && \
   echo "**** install wireguard-tools ****" && \
   if [ -z ${WIREGUARD_RELEASE+x} ]; then \
