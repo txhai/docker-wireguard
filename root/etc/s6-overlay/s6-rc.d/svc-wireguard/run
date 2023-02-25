@@ -1,3 +1,12 @@
 #!/usr/bin/with-contenv bash
-
+run_script () {
+  echo "$(date): Running $1"
+  eval "$1" || exit 1
+}
+custom_scriptdir="/wg/scripts/${IF_NAME}"
+pre_up="$custom_scriptdir/pre-up.sh"
+post_up="$custom_scriptdir/post-up.sh"
+[ -x "$pre_up" ] && run_script "$pre_up"
 wg-quick up ${IF_NAME}
+[ -x "$post_up" ] && run_script "$post_up"
+exit 0
